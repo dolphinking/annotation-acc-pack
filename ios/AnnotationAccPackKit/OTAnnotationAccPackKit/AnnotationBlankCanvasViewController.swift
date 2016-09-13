@@ -4,7 +4,7 @@
 //  Copyright © 2016 Tokbox, Inc. All rights reserved.
 //
 
-class AnnotationBlankCanvasViewController: UIViewController {
+class AnnotationBlankCanvasViewController: UIViewController, OTAnnotationEventNotificatorDelegate {
     
     let topOffset: CGFloat = 20 + 44
     let topOffsetForLandscape: CGFloat = 44
@@ -57,5 +57,27 @@ class AnnotationBlankCanvasViewController: UIViewController {
             annotationScrollView.toolbarView!.frame = CGRect(x: screenRect.width - widthOfToolbar, y: 0, width: widthOfToolbar, height: screenRect.height - topOffsetForLandscape)
             annotationScrollView.toolbarView?.toolbarViewOrientation = .landscapeRight
         }
+    }
+    
+    func didClickDoneButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("DoneButtonClicked")
+    }
+    func didClickFreeHandButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("FreeHandButtonClicked")
+    }
+    func didClickColorPickerButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("ColorPickerButtonClicked")
+    }
+    func didPickAColorOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("DidPickAColor")
+    }
+    func didClickTextButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("TextAnnotationButtonClicked")
+    }
+    func didClickScreenCaptureButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("ScreenCaptureButtonClicked")
+    }
+    func didClickEraseButtonOnAnnotationToolbarView(annotationToolbarView: OTAnnotationToolbarView!) {
+        print("EraseButtonClicked")
     }
 }

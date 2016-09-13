@@ -21,6 +21,17 @@ typedef NS_ENUM(NSUInteger, OTAnnotationToolbarViewOrientation) {
     OTAnnotationToolbarViewOrientationLandscapeRight
 };
 
+@protocol OTAnnotationEventNotificatorDelegate <NSObject>
+@optional
+- (void) didClickDoneButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didClickFreeHandButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didClickColorPickerButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didPickAColorOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didClickTextButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didClickScreenCaptureButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+- (void) didClickEraseButtonOnAnnotationToolbarView:(OTAnnotationToolbarView *)annotationToolbarView;
+@end
+
 @interface OTAnnotationToolbarView : UIView
 
 /**
@@ -36,6 +47,13 @@ typedef NS_ENUM(NSUInteger, OTAnnotationToolbarViewOrientation) {
  *  The delegate must adopt the OTAnnotationToolbarViewDelegate protocol. The delegate is not retained.
  */
 @property (weak, nonatomic) id<OTAnnotationToolbarViewDelegate> toolbarViewDelegate;
+
+/**
+ *  The object that acts as the delegate of the annotation toolbar to notificate events happening in the toolbar
+ *
+ *  The delegate must adopt the OTAnnotationEventNotificatorDelegate protocol. The delegate is not retained.
+ */
+@property (weak, nonatomic) id<OTAnnotationEventNotificatorDelegate> annotationEventDelegate;
 
 /**
  *  The orientation of this annotation toolbar.
